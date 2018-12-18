@@ -1,2 +1,2 @@
-# public-resource
-All public resources that other peoples can access anywhere and anytime
+### Description
+Declare magento requirements from magento 2.0 -> 2.3
