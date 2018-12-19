@@ -25,29 +25,24 @@ apt-get update -y && apt-get install -y \
 		bison \
 	--no-install-recommends && rm -r /var/lib/apt/lists/*
 
-# persitent / runtime dependencies
-apt-get update -y && apt-get install -y \
-		ca-certificates \
-		curl \
-		libcurl3 \
-		libedit2 \
-		libsqlite3-0 \
-		libxml2 \
-	--no-install-recommends && rm -r /var/lib/apt/lists/*
-#
+# php extension dependencies
 apt-get update -y && apt-get install -y apache2-dev \
+        wget \
+        curl \
+        ca-certificates \
+        libcurl3 \
+		libedit2 \
+		libxml2 \
         libcurl4-openssl-dev \
 		libedit-dev \
 		libsqlite3-dev \
 		libssl-dev \
 		libxml2-dev \
 		xz-utils \
-		wget \
         libpng-dev \
         libjpeg-dev \
         libxpm-dev \
         libfreetype6-dev \
-        libxml2-dev \
         libxslt-dev \
 	--no-install-recommends && rm -rf /var/lib/apt/lists/*
 
@@ -83,6 +78,10 @@ if [[ $PHP_VERSION == *"7.0"* ]]; then
     cp php.ini-development /usr/local/php/php.ini
     cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
     cp sapi/fpm/php-fpm /usr/local/bin
+    # config mcrypt extension
+    echo "extension=mcrypt.so" >> /usr/local/php/php.ini
+    # config opcache
+    # lastest opcache tar file url: http://pecl.php.net/get/ZendOpcache
     cd .. && rm -rf php-$PHP_VERSION*
 fi
 
@@ -94,13 +93,15 @@ fi
 
 if [ -z $APACHE_VERSION ]; then
     # install apache
-    apt-get install apache2 -y
-    a2enmod rewrite
-    service apache2 restart
+    echo "apacheeeee"
+#    apt-get install apache2 -y
+#    a2enmod rewrite
+#    service apache2 restart
 fi
 
 if [[ $MYSQL_VERSION == '5.7' ]]; then
-    echo "mysql dedeeeee"
+    # install mysql
+    echo "mysqllllll"
 fi
 
 #apt install -y mysql-server mysql-client
