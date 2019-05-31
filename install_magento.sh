@@ -1,4 +1,5 @@
 #!/bin/bash
+# download magento source and put it to SOURCE_FOLDER
 SOURCE_FOLDER="/home/pos/src"
 cd $SOURCE_FOLDER && tar -xf *.tar.gz
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server -y
