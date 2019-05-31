@@ -1,11 +1,11 @@
 #!/bin/bash
 # execute this file with normal user
 # go to https://github.com/mars-trueplus/public-resource
-# download magento source and put it to SOURCE_FOLDER
-
+# download magento source, put it to SOURCE_FOLDER and extract it
+# cd $SOURCE_FOLDER && tar -xf *.tar.gz
 USER="pos"
 SOURCE_FOLDER="/home/pos/src"
-cd $SOURCE_FOLDER && tar -xf *.tar.gz
+
 
 # config visudo to run sudo command without password
 # $ sudo visudo
