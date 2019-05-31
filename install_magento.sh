@@ -10,4 +10,3 @@ sudo apt-get install -y php7.1 libapache2-mod-php7.1 php7.1-common php7.1-gd php
 sudo mysql -u root -p -e "create user 'pos'@'localhost' identified by 'pos'"
 mysql -u pos -ppos -e "create database pos"
 cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var             vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod                                 u+x  bin/magento
-sudo mysql -u root -p -e "create user 'pos'@'localhost' identified by 'pos'"
