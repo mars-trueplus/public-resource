@@ -1,10 +1,12 @@
 #!/bin/bash
 # go to https://github.com/mars-trueplus/public-resourc
 # download magento source and put it to SOURCE_FOLDER
+USER="pos"
 SOURCE_FOLDER="/home/pos/src"
-cd $SOURCE_FOLDER && tar -xf *.tar.gz
+cd $SOURCE_FOLDER && tar -xf *.tar.gz && sudo chown -R $USER .
+
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server -y
-sudo usermod -aG www-data pos
+sudo usermod -aG www-data $USER
 sudo apt-get -y update
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get -y update
