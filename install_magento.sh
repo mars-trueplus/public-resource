@@ -42,11 +42,3 @@ cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod
 
 # install magento
 
-# get the https link and install mageto
-# run some command to magento work correctly with ssl
-# if your base url change
-# update it
-# $ php bin/magento setup:store-config:set --base-url="http://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure-admin=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento config:set web/url/redirect_to_base 0 && php bin/magento c:f
-
-
-
