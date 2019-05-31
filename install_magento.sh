@@ -13,3 +13,13 @@ sudo mysql -u root -p -e "create user 'pos'@'localhost' identified by 'pos'"
 sudo mysql -u root -p -e "grant all privileges on *.* to 'pos'@'localhost' identified by 'pos'"
 mysql -u pos -ppos -e "create database pos"
 cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var             vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod                                 u+x  bin/magento
+
+# update apache config to source folder
+#
+# DocumentRoot /home/pos/src
+# <Directory /home/pos/src>
+#   Options FollowSymLinks MultiViews
+#   AllowOverride All
+#   Order deny,allow
+#   Require all granted
+# </Directory>
