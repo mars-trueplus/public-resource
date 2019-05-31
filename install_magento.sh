@@ -42,3 +42,6 @@ cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod
 
 # install magento
 
+# after install magento
+# $ sudo a2enmod rewrite
+
