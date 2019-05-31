@@ -9,6 +9,7 @@ cd $SOURCE_FOLDER && tar -xf *.tar.gz
 
 # config visudo to run sudo command without password
 # $ sudo visudo
+
 # add this line to the end of file (replace pos with value of $USER)
 # pos ALL=(ALL) NOPASSWD: ALL
 
@@ -37,13 +38,15 @@ cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod
 # go to https://github.com/mars-trueplus/public-resourc
 # download ngork and extract it to SOURCE_FOLDER
 # run ngork to get a domain with ssl
-./ngrok http 80
+# $ ./ngrok http 80
+
 # install magento
 
 # get the https link and install mageto
 # run some command to magento work correctly with ssl
 # if your base url change
 # update it
-php bin/magento setup:store-config:set --base-url="http://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure-admin=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento config:set web/url/redirect_to_base 0 && php bin/magento c:f
+# $ php bin/magento setup:store-config:set --base-url="http://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento setup:store-config:set --use-secure-admin=1 --base-url="https://4793b244.ngrok.io/" && php bin/magento config:set web/url/redirect_to_base 0 && php bin/magento c:f
+
 
 
