@@ -23,3 +23,10 @@ cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod
 #   Order deny,allow
 #   Require all granted
 # </Directory>
+
+
+# go to https://github.com/mars-trueplus/public-resourc
+# download ngork and extract it to SOURCE_FOLDER
+# run ngork to get a domain with ssl
+./ngrok http 80
+# install magento
