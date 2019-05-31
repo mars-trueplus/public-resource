@@ -1,4 +1,5 @@
 #!/bin/bash
+# go to https://github.com/mars-trueplus/public-resourc
 # download magento source and put it to SOURCE_FOLDER
 SOURCE_FOLDER="/home/pos/src"
 cd $SOURCE_FOLDER && tar -xf *.tar.gz
