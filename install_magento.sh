@@ -1,15 +1,16 @@
 #!/bin/bash
-# go to https://github.com/mars-trueplus/public-resourc
+# execute this file with normal user
+# go to https://github.com/mars-trueplus/public-resource
 # download magento source and put it to SOURCE_FOLDER
 
 USER="pos"
 SOURCE_FOLDER="/home/pos/src"
-cd $SOURCE_FOLDER && tar -xf *.tar.gz && sudo chown -R $USER .
+cd $SOURCE_FOLDER && tar -xf *.tar.gz
 
 # config visudo to run sudo command without password
-sudo visudo
+# $ sudo visudo
 # add this line to the end of file (replace pos with value of $USER)
-pos ALL=(ALL) NOPASSWD: ALL
+# pos ALL=(ALL) NOPASSWD: ALL
 
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server -y
 sudo usermod -aG www-data $USER
