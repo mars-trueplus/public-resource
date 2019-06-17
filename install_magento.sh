@@ -3,8 +3,8 @@
 # go to https://github.com/mars-trueplus/public-resource
 # download magento source, put it to SOURCE_FOLDER and extract it
 # cd $SOURCE_FOLDER && tar -xf *.tar.gz
-USER="pos"
-SOURCE_FOLDER="/home/pos/src"
+USER="ubuntu"
+SOURCE_FOLDER="/home/ubuntu/magento/src"
 
 
 # config visudo to run sudo command without password
@@ -44,4 +44,3 @@ cd $SOURCE_FOLDER &&  sudo find app generated var vendor pub -type f -exec chmod
 
 # after install magento
 # $ sudo a2enmod rewrite
-
