@@ -19,7 +19,7 @@ sudo swapon /swapfile
 # pos ALL=(ALL) NOPASSWD: ALL
 
 mkdir -p $SOURCE_FOLDER
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server composer -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server -y
 sudo usermod -aG www-data $USER
 sudo apt-get -y update
 sudo add-apt-repository ppa:ondrej/php -y
@@ -31,8 +31,10 @@ sudo apt-get install -y php7.1 libapache2-mod-php7.1 php7.1-common php7.1-gd php
 sudo mysql -u root -p -e "create user if not exists 'magento'@'localhost' identified by 'magento'"
 sudo mysql -u root -p -e "grant all privileges on *.* to 'magento'@'localhost' identified by 'magento'"
 mysql -u magento -pmagento -e "create database magento"
+
 #cd $SOURCE_FOLDER && sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod u+x  bin/magento
 
+sudo apt-get install composer -y
 # install php library for pwa-pos
 #composer require \
 #        authorizenet/authorizenet \
