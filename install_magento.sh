@@ -13,7 +13,7 @@ SOURCE_FOLDER="/home/ubuntu/magento/src"
 # add this line to the end of file (replace pos with value of $USER)
 # pos ALL=(ALL) NOPASSWD: ALL
 
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server composer -y
 sudo usermod -aG www-data $USER
 sudo apt-get -y update
 sudo add-apt-repository ppa:ondrej/php -y
@@ -26,6 +26,15 @@ sudo mysql -u root -p -e "create user 'pos'@'localhost' identified by 'pos'"
 sudo mysql -u root -p -e "grant all privileges on *.* to 'pos'@'localhost' identified by 'pos'"
 mysql -u pos -ppos -e "create database pos"
 cd $SOURCE_FOLDER && sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod u+x  bin/magento
+
+# install php library for pwa-pos
+# php vendor/composer/composer/bin/composer require \
+#        authorizenet/authorizenet \
+#        symfony/yaml:dev-issue-8145 \
+#        paypal/rest-api-sdk-php:* \
+#        paypal/merchant-sdk-php:* \
+#        stripe/stripe-php:* \
+#        zendframework/zend-barcode
 
 # update apache config to source folder
 #
