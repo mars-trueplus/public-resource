@@ -6,6 +6,11 @@
 USER="ubuntu"
 SOURCE_FOLDER="/home/ubuntu/magento"
 
+# create swap file (if real RAM <= 1GB)
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
 
 # config visudo to run sudo command without password
 # $ sudo visudo
