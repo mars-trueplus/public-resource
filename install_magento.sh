@@ -4,7 +4,7 @@
 # download magento source, put it to SOURCE_FOLDER and extract it
 # cd $SOURCE_FOLDER && tar -xf *.tar.gz
 USER="ubuntu"
-SOURCE_FOLDER="/home/ubuntu/magento/src"
+SOURCE_FOLDER="/home/ubuntu/magento"
 
 
 # config visudo to run sudo command without password
@@ -13,6 +13,7 @@ SOURCE_FOLDER="/home/ubuntu/magento/src"
 # add this line to the end of file (replace pos with value of $USER)
 # pos ALL=(ALL) NOPASSWD: ALL
 
+mkdir -p $SOURCE_FOLDER
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 mysql-server composer -y
 sudo usermod -aG www-data $USER
 sudo apt-get -y update
@@ -22,22 +23,26 @@ sudo apt-get install -y php7.1 libapache2-mod-php7.1 php7.1-common php7.1-gd php
 
 sudo apt-get update && sudo apt-get install software-properties-common -y && sudo add-apt-repository universe -y && sudo add-apt-repository ppa:certbot/certbot -y && sudo apt-get update && sudo apt-get install certbot python-certbot-apache -y
 
-sudo mysql -u root -p -e "create user 'pos'@'localhost' identified by 'pos'"
-sudo mysql -u root -p -e "grant all privileges on *.* to 'pos'@'localhost' identified by 'pos'"
-mysql -u pos -ppos -e "create database pos"
-cd $SOURCE_FOLDER && sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod u+x  bin/magento
+sudo mysql -u root -p -e "create user 'magento'@'localhost' identified by 'magento'"
+sudo mysql -u root -p -e "grant all privileges on *.* to 'magento'@'localhost' identified by 'magento'"
+mysql -u magento -pmagento -e "create database magento"
+#cd $SOURCE_FOLDER && sudo find app generated var vendor pub -type f -exec chmod g+w {} \; && sudo find app generated var vendor pub -type d -exec chmod g+ws {} \; && sudo chown -R :www-data . && sudo chmod u+x  bin/magento
 
 # install php library for pwa-pos
-# php vendor/composer/composer/bin/composer require \
-#        authorizenet/authorizenet \
-#        symfony/yaml:dev-issue-8145 \
-#        paypal/rest-api-sdk-php:* \
-#        paypal/merchant-sdk-php:* \
-#        stripe/stripe-php:* \
-#        zendframework/zend-barcode
+composer require \
+        authorizenet/authorizenet \
+        symfony/yaml:dev-issue-8145 \
+        paypal/rest-api-sdk-php:* \
+        paypal/merchant-sdk-php:* \
+        stripe/stripe-php:* \
+        zendframework/zend-barcode
+
+# install composer suggested library
+composer suggests | xargs -i composer require {}
+
 
 # update apache config to source folder
-#
+
 # DocumentRoot /home/pos/src
 # <Directory /home/pos/src>
 #   Options FollowSymLinks MultiViews
